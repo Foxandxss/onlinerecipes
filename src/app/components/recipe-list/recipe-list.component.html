@@ -1,0 +1,37 @@
+<div class="recipe-list-container">
+  <h1>Online Recipes</h1>
+  <p class="subtitle">Discover delicious recipes from around the world</p>
+
+  <div class="recipe-grid">
+    <div class="recipe-card" *ngFor="let recipe of recipes" [routerLink]="['/recipe', recipe.id]">
+      <div class="recipe-image">
+        <img [src]="recipe.image" [alt]="recipe.name" />
+        <span class="cuisine-badge">{{ recipe.cuisine }}</span>
+      </div>
+      <div class="recipe-content">
+        <h2>{{ recipe.name }}</h2>
+        <div class="recipe-meta">
+          <span class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            {{ recipe.prepTime + recipe.cookTime }} min
+          </span>
+          <span class="meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            {{ recipe.servings }} servings
+          </span>
+          <span class="meta-item difficulty" [class.easy]="recipe.difficulty === 'Easy'" [class.medium]="recipe.difficulty === 'Medium'">
+            {{ recipe.difficulty }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

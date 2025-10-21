@@ -1,0 +1,305 @@
+[
+  {
+    "id": 1,
+    "name": "Spaghetti Carbonara",
+    "cuisine": "Italian",
+    "prepTime": 15,
+    "cookTime": 20,
+    "servings": 4,
+    "difficulty": "Medium",
+    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400",
+    "ingredients": [
+      "400g spaghetti",
+      "200g pancetta or guanciale",
+      "4 large eggs",
+      "100g Pecorino Romano cheese",
+      "Black pepper",
+      "Salt"
+    ],
+    "instructions": [
+      "Bring a large pot of salted water to boil and cook spaghetti according to package directions.",
+      "While pasta cooks, cut pancetta into small pieces and fry in a large pan until crispy.",
+      "In a bowl, whisk together eggs, grated cheese, and black pepper.",
+      "Reserve 1 cup pasta water, then drain pasta.",
+      "Remove pan from heat, add pasta to pancetta, then quickly stir in egg mixture.",
+      "Add pasta water as needed to create a creamy sauce. Serve immediately."
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Chicken Tikka Masala",
+    "cuisine": "Indian",
+    "prepTime": 30,
+    "cookTime": 40,
+    "servings": 6,
+    "difficulty": "Medium",
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400",
+    "ingredients": [
+      "800g chicken breast, cubed",
+      "1 cup plain yogurt",
+      "2 tbsp tikka masala spice",
+      "400g canned tomatoes",
+      "200ml heavy cream",
+      "1 onion, diced",
+      "4 cloves garlic, minced",
+      "2 tbsp ginger, minced",
+      "Fresh cilantro"
+    ],
+    "instructions": [
+      "Marinate chicken in yogurt and half the tikka masala spice for at least 30 minutes.",
+      "Grill or pan-fry chicken pieces until cooked through.",
+      "In a large pan, sauté onion, garlic, and ginger until soft.",
+      "Add remaining spice and cook for 1 minute.",
+      "Add tomatoes and simmer for 10 minutes.",
+      "Stir in cream and cooked chicken. Simmer 10 more minutes.",
+      "Garnish with cilantro and serve with rice or naan."
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Classic Beef Burger",
+    "cuisine": "American",
+    "prepTime": 10,
+    "cookTime": 15,
+    "servings": 4,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+    "ingredients": [
+      "600g ground beef (80/20)",
+      "4 burger buns",
+      "4 slices cheddar cheese",
+      "Lettuce leaves",
+      "Tomato slices",
+      "Red onion slices",
+      "Pickles",
+      "Ketchup, mustard, mayo",
+      "Salt and pepper"
+    ],
+    "instructions": [
+      "Divide beef into 4 equal portions and form into patties.",
+      "Season generously with salt and pepper on both sides.",
+      "Heat a grill or pan over high heat.",
+      "Cook patties 4-5 minutes per side for medium doneness.",
+      "Add cheese in the last minute of cooking.",
+      "Toast buns lightly.",
+      "Assemble burgers with desired toppings and condiments."
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Pad Thai",
+    "cuisine": "Thai",
+    "prepTime": 20,
+    "cookTime": 15,
+    "servings": 4,
+    "difficulty": "Medium",
+    "image": "https://images.unsplash.com/photo-1559314809-0d155014e29e?w=400",
+    "ingredients": [
+      "200g rice noodles",
+      "300g shrimp or chicken",
+      "3 eggs",
+      "3 tbsp fish sauce",
+      "2 tbsp tamarind paste",
+      "2 tbsp palm sugar",
+      "Bean sprouts",
+      "Peanuts, crushed",
+      "Green onions",
+      "Lime wedges"
+    ],
+    "instructions": [
+      "Soak rice noodles in warm water for 30 minutes, then drain.",
+      "Mix fish sauce, tamarind paste, and palm sugar for the sauce.",
+      "Heat oil in a wok over high heat.",
+      "Cook shrimp or chicken until done, then set aside.",
+      "Scramble eggs in the wok, then add noodles.",
+      "Add sauce and toss everything together.",
+      "Add protein back in, top with bean sprouts, peanuts, and green onions.",
+      "Serve with lime wedges."
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Margherita Pizza",
+    "cuisine": "Italian",
+    "prepTime": 120,
+    "cookTime": 12,
+    "servings": 2,
+    "difficulty": "Medium",
+    "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400",
+    "ingredients": [
+      "500g pizza dough",
+      "400g San Marzano tomatoes",
+      "250g fresh mozzarella",
+      "Fresh basil leaves",
+      "Extra virgin olive oil",
+      "Salt",
+      "Garlic (optional)"
+    ],
+    "instructions": [
+      "Let dough come to room temperature for 1 hour.",
+      "Preheat oven to highest setting (250°C/480°F) with pizza stone.",
+      "Crush tomatoes by hand and season with salt.",
+      "Stretch dough into a 12-inch circle.",
+      "Spread thin layer of tomato sauce on dough.",
+      "Tear mozzarella and distribute evenly.",
+      "Drizzle with olive oil.",
+      "Bake for 10-12 minutes until crust is golden and cheese is bubbly.",
+      "Top with fresh basil leaves and serve immediately."
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Greek Salad",
+    "cuisine": "Greek",
+    "prepTime": 15,
+    "cookTime": 0,
+    "servings": 4,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400",
+    "ingredients": [
+      "4 large tomatoes, cut into wedges",
+      "1 cucumber, sliced",
+      "1 red onion, thinly sliced",
+      "1 green bell pepper, sliced",
+      "200g feta cheese, cubed",
+      "Kalamata olives",
+      "Extra virgin olive oil",
+      "Red wine vinegar",
+      "Dried oregano",
+      "Salt and pepper"
+    ],
+    "instructions": [
+      "Combine tomatoes, cucumber, onion, and bell pepper in a large bowl.",
+      "Add olives and feta cheese.",
+      "Drizzle with olive oil and red wine vinegar.",
+      "Season with oregano, salt, and pepper.",
+      "Toss gently and serve immediately."
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Beef Tacos",
+    "cuisine": "Mexican",
+    "prepTime": 10,
+    "cookTime": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=400",
+    "ingredients": [
+      "500g ground beef",
+      "1 packet taco seasoning",
+      "8 taco shells or tortillas",
+      "Shredded lettuce",
+      "Diced tomatoes",
+      "Shredded cheddar cheese",
+      "Sour cream",
+      "Salsa",
+      "Diced onions",
+      "Fresh cilantro"
+    ],
+    "instructions": [
+      "Brown ground beef in a large skillet over medium-high heat.",
+      "Drain excess fat.",
+      "Add taco seasoning and water according to package directions.",
+      "Simmer for 5 minutes until thickened.",
+      "Warm taco shells according to package directions.",
+      "Fill shells with beef and desired toppings.",
+      "Serve with lime wedges."
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Chicken Teriyaki",
+    "cuisine": "Japanese",
+    "prepTime": 15,
+    "cookTime": 20,
+    "servings": 4,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=400",
+    "ingredients": [
+      "600g chicken thighs, boneless",
+      "1/2 cup soy sauce",
+      "1/4 cup mirin",
+      "2 tbsp sake",
+      "3 tbsp sugar",
+      "2 cloves garlic, minced",
+      "1 tsp ginger, grated",
+      "Sesame seeds",
+      "Green onions, sliced",
+      "Steamed rice for serving"
+    ],
+    "instructions": [
+      "Cut chicken into bite-sized pieces.",
+      "Mix soy sauce, mirin, sake, sugar, garlic, and ginger for the teriyaki sauce.",
+      "Heat oil in a large pan over medium-high heat.",
+      "Cook chicken until golden brown on all sides.",
+      "Pour teriyaki sauce over chicken.",
+      "Simmer until sauce thickens and chicken is cooked through.",
+      "Garnish with sesame seeds and green onions.",
+      "Serve over steamed rice."
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Caesar Salad",
+    "cuisine": "American",
+    "prepTime": 15,
+    "cookTime": 10,
+    "servings": 4,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400",
+    "ingredients": [
+      "2 romaine lettuce heads",
+      "1 cup croutons",
+      "1/2 cup Parmesan cheese, shaved",
+      "For dressing: 2 egg yolks",
+      "2 cloves garlic, minced",
+      "2 tsp Dijon mustard",
+      "4 anchovy fillets",
+      "Juice of 1 lemon",
+      "1/2 cup olive oil",
+      "Salt and pepper"
+    ],
+    "instructions": [
+      "Wash and dry romaine lettuce, then tear into bite-sized pieces.",
+      "For dressing: blend egg yolks, garlic, mustard, anchovies, and lemon juice.",
+      "Slowly drizzle in olive oil while blending until emulsified.",
+      "Season with salt and pepper.",
+      "Toss lettuce with dressing.",
+      "Add croutons and Parmesan cheese.",
+      "Serve immediately."
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Chocolate Chip Cookies",
+    "cuisine": "American",
+    "prepTime": 15,
+    "cookTime": 12,
+    "servings": 24,
+    "difficulty": "Easy",
+    "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400",
+    "ingredients": [
+      "2 1/4 cups all-purpose flour",
+      "1 tsp baking soda",
+      "1 tsp salt",
+      "1 cup butter, softened",
+      "3/4 cup granulated sugar",
+      "3/4 cup brown sugar",
+      "2 large eggs",
+      "2 tsp vanilla extract",
+      "2 cups chocolate chips"
+    ],
+    "instructions": [
+      "Preheat oven to 375°F (190°C).",
+      "Mix flour, baking soda, and salt in a bowl.",
+      "In another bowl, cream together butter and both sugars until fluffy.",
+      "Beat in eggs and vanilla.",
+      "Gradually stir in flour mixture.",
+      "Fold in chocolate chips.",
+      "Drop rounded tablespoons of dough onto ungreased baking sheets.",
+      "Bake for 9-12 minutes until golden brown.",
+      "Cool on baking sheet for 2 minutes, then transfer to wire rack."
+    ]
+  }
+]
