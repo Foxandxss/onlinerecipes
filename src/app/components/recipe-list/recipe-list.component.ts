@@ -15,6 +15,6 @@ export class RecipeListComponent {
   private recipeService = inject(RecipeService);
   languageService = inject(LanguageService);
 
-  recipes = this.recipeService.getRecipes();
+  recipes = this.recipeService.getRecipes;
   translations = this.languageService.translations;
 }

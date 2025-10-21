@@ -8,7 +8,7 @@
   </div>
 
   <div class="recipe-grid">
-    <div class="recipe-card" *ngFor="let recipe of recipes" [routerLink]="['/recipe', recipe.id]">
+    <div class="recipe-card" *ngFor="let recipe of recipes()" [routerLink]="['/recipe', recipe.id]">
       <div class="recipe-image">
         <img [src]="recipe.image" [alt]="recipe.name" />
         <span class="cuisine-badge">{{ recipe.cuisine }}</span>
