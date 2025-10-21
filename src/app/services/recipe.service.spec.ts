@@ -1,7 +1,7 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { TestBed } from '@angular/core/testing';
-import { RecipeService } from './recipe.service';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { LanguageService } from './language.service';
+import { RecipeService } from './recipe.service';
 
 describe('RecipeService', () => {
   let service: RecipeService;
@@ -94,9 +94,9 @@ describe('RecipeService', () => {
 
   it('should translate all cuisines correctly', () => {
     const recipes = service.getRecipes;
-    const italianRecipe = recipes().find(r => r.id === 1);
-    const indianRecipe = recipes().find(r => r.id === 2);
-    const americanRecipe = recipes().find(r => r.id === 3);
+    const italianRecipe = recipes().find((r) => r.id === 1);
+    const indianRecipe = recipes().find((r) => r.id === 2);
+    const americanRecipe = recipes().find((r) => r.id === 3);
 
     expect(italianRecipe?.cuisine).toBe('Italian');
     expect(indianRecipe?.cuisine).toBe('Indian');
@@ -104,9 +104,9 @@ describe('RecipeService', () => {
 
     languageService.setLanguage('es');
     const recipesEs = service.getRecipes;
-    const italianRecipeEs = recipesEs().find(r => r.id === 1);
-    const indianRecipeEs = recipesEs().find(r => r.id === 2);
-    const americanRecipeEs = recipesEs().find(r => r.id === 3);
+    const italianRecipeEs = recipesEs().find((r) => r.id === 1);
+    const indianRecipeEs = recipesEs().find((r) => r.id === 2);
+    const americanRecipeEs = recipesEs().find((r) => r.id === 3);
 
     expect(italianRecipeEs?.cuisine).toBe('Italiana');
     expect(indianRecipeEs?.cuisine).toBe('India');
@@ -115,16 +115,16 @@ describe('RecipeService', () => {
 
   it('should translate all difficulty levels correctly', () => {
     const recipes = service.getRecipes;
-    const easyRecipe = recipes().find(r => r.difficulty === 'Easy');
-    const mediumRecipe = recipes().find(r => r.difficulty === 'Medium');
+    const easyRecipe = recipes().find((r) => r.difficulty === 'Easy');
+    const mediumRecipe = recipes().find((r) => r.difficulty === 'Medium');
 
     expect(easyRecipe).toBeDefined();
     expect(mediumRecipe).toBeDefined();
 
     languageService.setLanguage('es');
     const recipesEs = service.getRecipes;
-    const easyRecipeEs = recipesEs().find(r => r.difficulty === 'Fácil');
-    const mediumRecipeEs = recipesEs().find(r => r.difficulty === 'Media');
+    const easyRecipeEs = recipesEs().find((r) => r.difficulty === 'Fácil');
+    const mediumRecipeEs = recipesEs().find((r) => r.difficulty === 'Media');
 
     expect(easyRecipeEs).toBeDefined();
     expect(mediumRecipeEs).toBeDefined();

@@ -1,79 +1,79 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LanguageToggleComponent } from './language-toggle.component';
+import { render, screen } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { LanguageService } from '../../services/language.service';
+import { LanguageToggleComponent } from './language-toggle.component';
 
 describe('LanguageToggleComponent', () => {
-  let component: LanguageToggleComponent;
-  let fixture: ComponentFixture<LanguageToggleComponent>;
   let languageService: LanguageService;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     localStorage.clear();
-    await TestBed.configureTestingModule({
-      imports: [LanguageToggleComponent]
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(LanguageToggleComponent);
-    component = fixture.componentInstance;
-    languageService = TestBed.inject(LanguageService);
-    fixture.detectChanges();
   });
 
   afterEach(() => {
     localStorage.clear();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create', async () => {
+    const view = await render(LanguageToggleComponent);
+    expect(view.container).toBeInTheDocument();
   });
 
-  it('should display EN when current language is English', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('.language-toggle span');
-    expect(button?.textContent?.trim()).toBe('EN');
+  it('should display EN when current language is English', async () => {
+    await render(LanguageToggleComponent);
+    const button = screen.getByRole('button', { name: /EN/i });
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveTextContent('EN');
   });
 
-  it('should display ES when current language is Spanish', () => {
+  it('should display ES when current language is Spanish', async () => {
+    const view = await render(LanguageToggleComponent);
+    languageService = view.fixture.componentRef.injector.get(LanguageService);
+
     languageService.setLanguage('es');
-    fixture.detectChanges();
 
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('.language-toggle span');
-    expect(button?.textContent?.trim()).toBe('ES');
+    const button = await screen.findByRole('button', { name: /ES/i });
+    expect(button).toHaveTextContent('ES');
   });
 
-  it('should toggle language when clicked', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('.language-toggle') as HTMLButtonElement;
+  it('should toggle language when clicked', async () => {
+    const user = userEvent.setup();
+    const view = await render(LanguageToggleComponent);
+    languageService = view.fixture.componentRef.injector.get(LanguageService);
 
     expect(languageService.language()).toBe('en');
-    button.click();
+
+    const button = screen.getByRole('button');
+    await user.click(button);
+
     expect(languageService.language()).toBe('es');
   });
 
-  it('should update button text after toggle', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('.language-toggle') as HTMLButtonElement;
-    const span = compiled.querySelector('.language-toggle span');
+  it('should update button text after toggle', async () => {
+    const user = userEvent.setup();
+    await render(LanguageToggleComponent);
 
-    expect(span?.textContent?.trim()).toBe('EN');
+    const button = screen.getByRole('button', { name: /EN/i });
+    expect(button).toHaveTextContent('EN');
 
-    button.click();
-    fixture.detectChanges();
+    await user.click(button);
 
-    expect(span?.textContent?.trim()).toBe('ES');
+    expect(button).toHaveTextContent('ES');
   });
 
-  it('should toggle back to English from Spanish', () => {
+  it('should toggle back to English from Spanish', async () => {
+    const user = userEvent.setup();
+    const view = await render(LanguageToggleComponent);
+    languageService = view.fixture.componentRef.injector.get(LanguageService);
+
     languageService.setLanguage('es');
-    fixture.detectChanges();
 
-    const compiled = fixture.nativeElement as HTMLElement;
-    const button = compiled.querySelector('.language-toggle') as HTMLButtonElement;
-
+    const button = await screen.findByRole('button', { name: /ES/i });
     expect(languageService.language()).toBe('es');
-    button.click();
+
+    await user.click(button);
+
     expect(languageService.language()).toBe('en');
   });
 });

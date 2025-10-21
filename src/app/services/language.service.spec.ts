@@ -1,5 +1,4 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { TestBed } from '@angular/core/testing';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { LanguageService } from './language.service';
 
 describe('LanguageService', () => {
@@ -8,8 +7,7 @@ describe('LanguageService', () => {
   beforeEach(() => {
     // Clear localStorage before each test
     localStorage.clear();
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(LanguageService);
+    service = new LanguageService();
   });
 
   afterEach(() => {
@@ -27,7 +25,9 @@ describe('LanguageService', () => {
   it('should return English translations by default', () => {
     const translations = service.getTranslations();
     expect(translations.title).toBe('Online Recipes');
-    expect(translations.subtitle).toBe('Discover delicious recipes from around the world');
+    expect(translations.subtitle).toBe(
+      'Discover delicious recipes from around the world'
+    );
   });
 
   it('should change language to Spanish', () => {
@@ -39,7 +39,9 @@ describe('LanguageService', () => {
     service.setLanguage('es');
     const translations = service.getTranslations();
     expect(translations.title).toBe('Recetas Online');
-    expect(translations.subtitle).toBe('Descubre deliciosas recetas de todo el mundo');
+    expect(translations.subtitle).toBe(
+      'Descubre deliciosas recetas de todo el mundo'
+    );
   });
 
   it('should toggle language from English to Spanish', () => {
