@@ -1,5 +1,8 @@
 import { createConfig } from '@nx/angular-rspack';
 
+// Get public path from environment variable, default to root
+const publicPath = process.env['PUBLIC_PATH'] || '/';
+
 export default createConfig(
   {
     options: {
@@ -20,6 +23,7 @@ export default createConfig(
       ],
       styles: ['./src/styles.css'],
       devServer: {},
+      baseHref: publicPath,
     },
   },
   {
@@ -39,6 +43,11 @@ export default createConfig(
         ],
         outputHashing: 'all',
         devServer: {},
+      },
+      rspackOverride: (config) => {
+        config.output = config.output || {};
+        config.output.publicPath = publicPath;
+        return config;
       },
     },
 

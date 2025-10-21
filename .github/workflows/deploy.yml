@@ -33,7 +33,9 @@ jobs:
         run: npm ci
 
       - name: Build application
-        run: npx nx build onlinerecipes --configuration=production --base-href=/onlinerecipes/
+        env:
+          PUBLIC_PATH: /onlinerecipes/
+        run: npx nx build onlinerecipes --configuration=production
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -64,8 +66,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build application with PR base href
-        run: npx nx build onlinerecipes --configuration=production --base-href=/onlinerecipes/pr-${{ github.event.pull_request.number }}/
+      - name: Build application with PR base path
+        env:
+          PUBLIC_PATH: /onlinerecipes/pr-${{ github.event.pull_request.number }}/
+        run: npx nx build onlinerecipes --configuration=production
 
       - name: Deploy PR preview to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
