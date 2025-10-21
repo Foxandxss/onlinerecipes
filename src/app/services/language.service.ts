@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, computed } from '@angular/core';
 import { Language, UITranslations } from '../models/translations.model';
 import { translations } from '../data/translations';
 
@@ -9,6 +9,8 @@ export class LanguageService {
   private currentLanguage = signal<Language>('en');
 
   language = this.currentLanguage.asReadonly();
+
+  translations = computed<UITranslations>(() => translations[this.currentLanguage()]);
 
   getTranslations(): UITranslations {
     return translations[this.currentLanguage()];

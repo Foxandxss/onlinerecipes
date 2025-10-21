@@ -1,4 +1,4 @@
-import { Component, inject, effect } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
@@ -19,7 +19,7 @@ export class RecipeDetailComponent {
 
   recipeId: number = 0;
   recipe;
-  translations = () => this.languageService.getTranslations();
+  translations = this.languageService.translations;
 
   constructor() {
     const idParam = this.route.snapshot.paramMap.get('id');
