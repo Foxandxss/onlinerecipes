@@ -41,7 +41,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/onlinerecipes
+          publish_dir: ./dist/onlinerecipes/browser
           destination_dir: .
           keep_files: false
           user_name: "github-actions[bot]"
@@ -75,7 +75,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/onlinerecipes
+          publish_dir: ./dist/onlinerecipes/browser
           destination_dir: pr-${{ github.event.pull_request.number }}
           keep_files: true
           user_name: "github-actions[bot]"
