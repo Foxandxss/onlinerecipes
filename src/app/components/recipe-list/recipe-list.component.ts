@@ -1,21 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
-import { Recipe } from '../../models/recipe.model';
+import { LanguageService } from '../../services/language.service';
+import { LanguageToggleComponent } from '../language-toggle/language-toggle.component';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, LanguageToggleComponent],
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.css'
 })
-export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [];
+export class RecipeListComponent {
+  private recipeService = inject(RecipeService);
+  languageService = inject(LanguageService);
 
-  constructor(private recipeService: RecipeService) {}
-
-  ngOnInit(): void {
-    this.recipes = this.recipeService.getRecipes();
-  }
+  recipes = this.recipeService.getRecipes;
+  translations = this.languageService.translations;
 }

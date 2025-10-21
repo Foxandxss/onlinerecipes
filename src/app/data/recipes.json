@@ -2,11 +2,14 @@
   {
     "id": 1,
     "name": "Spaghetti Carbonara",
+    "name_es": "Espagueti Carbonara",
     "cuisine": "Italian",
+    "cuisine_es": "Italiana",
     "prepTime": 15,
     "cookTime": 20,
     "servings": 4,
     "difficulty": "Medium",
+    "difficulty_es": "Media",
     "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400",
     "ingredients": [
       "400g spaghetti",
@@ -16,6 +19,14 @@
       "Black pepper",
       "Salt"
     ],
+    "ingredients_es": [
+      "400g de espagueti",
+      "200g de pancetta o guanciale",
+      "4 huevos grandes",
+      "100g de queso Pecorino Romano",
+      "Pimienta negra",
+      "Sal"
+    ],
     "instructions": [
       "Bring a large pot of salted water to boil and cook spaghetti according to package directions.",
       "While pasta cooks, cut pancetta into small pieces and fry in a large pan until crispy.",
@@ -23,16 +34,27 @@
       "Reserve 1 cup pasta water, then drain pasta.",
       "Remove pan from heat, add pasta to pancetta, then quickly stir in egg mixture.",
       "Add pasta water as needed to create a creamy sauce. Serve immediately."
+    ],
+    "instructions_es": [
+      "Hierve una olla grande de agua con sal y cocina el espagueti según las instrucciones del paquete.",
+      "Mientras se cocina la pasta, corta la pancetta en trozos pequeños y fríela en una sartén grande hasta que esté crujiente.",
+      "En un tazón, bate los huevos, el queso rallado y la pimienta negra.",
+      "Reserva 1 taza de agua de la pasta, luego escurre la pasta.",
+      "Retira la sartén del fuego, agrega la pasta a la pancetta y luego mezcla rápidamente la mezcla de huevo.",
+      "Agrega agua de la pasta según sea necesario para crear una salsa cremosa. Sirve inmediatamente."
     ]
   },
   {
     "id": 2,
     "name": "Chicken Tikka Masala",
+    "name_es": "Pollo Tikka Masala",
     "cuisine": "Indian",
+    "cuisine_es": "India",
     "prepTime": 30,
     "cookTime": 40,
     "servings": 6,
     "difficulty": "Medium",
+    "difficulty_es": "Media",
     "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400",
     "ingredients": [
       "800g chicken breast, cubed",
@@ -45,6 +67,17 @@
       "2 tbsp ginger, minced",
       "Fresh cilantro"
     ],
+    "ingredients_es": [
+      "800g de pechuga de pollo, en cubos",
+      "1 taza de yogur natural",
+      "2 cucharadas de especias tikka masala",
+      "400g de tomates enlatados",
+      "200ml de crema para batir",
+      "1 cebolla, en cubos",
+      "4 dientes de ajo, picados",
+      "2 cucharadas de jengibre, picado",
+      "Cilantro fresco"
+    ],
     "instructions": [
       "Marinate chicken in yogurt and half the tikka masala spice for at least 30 minutes.",
       "Grill or pan-fry chicken pieces until cooked through.",
@@ -53,16 +86,28 @@
       "Add tomatoes and simmer for 10 minutes.",
       "Stir in cream and cooked chicken. Simmer 10 more minutes.",
       "Garnish with cilantro and serve with rice or naan."
+    ],
+    "instructions_es": [
+      "Marina el pollo en yogur y la mitad de las especias tikka masala durante al menos 30 minutos.",
+      "Asa o fríe los trozos de pollo hasta que estén bien cocidos.",
+      "En una sartén grande, saltea la cebolla, el ajo y el jengibre hasta que estén suaves.",
+      "Agrega el resto de las especias y cocina durante 1 minuto.",
+      "Agrega los tomates y cocina a fuego lento durante 10 minutos.",
+      "Incorpora la crema y el pollo cocido. Cocina a fuego lento 10 minutos más.",
+      "Decora con cilantro y sirve con arroz o naan."
     ]
   },
   {
     "id": 3,
     "name": "Classic Beef Burger",
+    "name_es": "Hamburguesa Clásica de Res",
     "cuisine": "American",
+    "cuisine_es": "Americana",
     "prepTime": 10,
     "cookTime": 15,
     "servings": 4,
     "difficulty": "Easy",
+    "difficulty_es": "Fácil",
     "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
     "ingredients": [
       "600g ground beef (80/20)",
@@ -75,6 +120,17 @@
       "Ketchup, mustard, mayo",
       "Salt and pepper"
     ],
+    "ingredients_es": [
+      "600g de carne molida de res (80/20)",
+      "4 panes para hamburguesa",
+      "4 rebanadas de queso cheddar",
+      "Hojas de lechuga",
+      "Rebanadas de tomate",
+      "Rebanadas de cebolla morada",
+      "Pepinillos",
+      "Ketchup, mostaza, mayonesa",
+      "Sal y pimienta"
+    ],
     "instructions": [
       "Divide beef into 4 equal portions and form into patties.",
       "Season generously with salt and pepper on both sides.",
@@ -83,16 +139,28 @@
       "Add cheese in the last minute of cooking.",
       "Toast buns lightly.",
       "Assemble burgers with desired toppings and condiments."
+    ],
+    "instructions_es": [
+      "Divide la carne en 4 porciones iguales y forma hamburguesas.",
+      "Sazona generosamente con sal y pimienta por ambos lados.",
+      "Calienta una parrilla o sartén a fuego alto.",
+      "Cocina las hamburguesas 4-5 minutos por lado para término medio.",
+      "Agrega el queso en el último minuto de cocción.",
+      "Tuesta ligeramente los panes.",
+      "Arma las hamburguesas con los ingredientes y condimentos deseados."
     ]
   },
   {
     "id": 4,
     "name": "Pad Thai",
+    "name_es": "Pad Thai",
     "cuisine": "Thai",
+    "cuisine_es": "Tailandesa",
     "prepTime": 20,
     "cookTime": 15,
     "servings": 4,
     "difficulty": "Medium",
+    "difficulty_es": "Media",
     "image": "https://images.unsplash.com/photo-1559314809-0d155014e29e?w=400",
     "ingredients": [
       "200g rice noodles",
@@ -106,6 +174,18 @@
       "Green onions",
       "Lime wedges"
     ],
+    "ingredients_es": [
+      "200g de fideos de arroz",
+      "300g de camarones o pollo",
+      "3 huevos",
+      "3 cucharadas de salsa de pescado",
+      "2 cucharadas de pasta de tamarindo",
+      "2 cucharadas de azúcar de palma",
+      "Brotes de soja",
+      "Cacahuates, triturados",
+      "Cebollas verdes",
+      "Gajos de lima"
+    ],
     "instructions": [
       "Soak rice noodles in warm water for 30 minutes, then drain.",
       "Mix fish sauce, tamarind paste, and palm sugar for the sauce.",
@@ -115,16 +195,29 @@
       "Add sauce and toss everything together.",
       "Add protein back in, top with bean sprouts, peanuts, and green onions.",
       "Serve with lime wedges."
+    ],
+    "instructions_es": [
+      "Remoja los fideos de arroz en agua tibia durante 30 minutos, luego escúrrelos.",
+      "Mezcla la salsa de pescado, la pasta de tamarindo y el azúcar de palma para la salsa.",
+      "Calienta aceite en un wok a fuego alto.",
+      "Cocina los camarones o el pollo hasta que estén listos, luego reserva.",
+      "Revuelve los huevos en el wok, luego agrega los fideos.",
+      "Agrega la salsa y mezcla todo.",
+      "Vuelve a agregar la proteína, cubre con brotes de soja, cacahuates y cebollas verdes.",
+      "Sirve con gajos de lima."
     ]
   },
   {
     "id": 5,
     "name": "Margherita Pizza",
+    "name_es": "Pizza Margherita",
     "cuisine": "Italian",
+    "cuisine_es": "Italiana",
     "prepTime": 120,
     "cookTime": 12,
     "servings": 2,
     "difficulty": "Medium",
+    "difficulty_es": "Media",
     "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400",
     "ingredients": [
       "500g pizza dough",
@@ -134,6 +227,15 @@
       "Extra virgin olive oil",
       "Salt",
       "Garlic (optional)"
+    ],
+    "ingredients_es": [
+      "500g de masa para pizza",
+      "400g de tomates San Marzano",
+      "250g de mozzarella fresca",
+      "Hojas de albahaca fresca",
+      "Aceite de oliva extra virgen",
+      "Sal",
+      "Ajo (opcional)"
     ],
     "instructions": [
       "Let dough come to room temperature for 1 hour.",
@@ -145,16 +247,30 @@
       "Drizzle with olive oil.",
       "Bake for 10-12 minutes until crust is golden and cheese is bubbly.",
       "Top with fresh basil leaves and serve immediately."
+    ],
+    "instructions_es": [
+      "Deja que la masa alcance temperatura ambiente durante 1 hora.",
+      "Precalienta el horno a la temperatura más alta (250°C/480°F) con piedra para pizza.",
+      "Aplasta los tomates a mano y sazona con sal.",
+      "Estira la masa en un círculo de 12 pulgadas.",
+      "Esparce una capa fina de salsa de tomate sobre la masa.",
+      "Desmenuza la mozzarella y distribúyela uniformemente.",
+      "Rocía con aceite de oliva.",
+      "Hornea durante 10-12 minutos hasta que la corteza esté dorada y el queso burbujeante.",
+      "Cubre con hojas de albahaca fresca y sirve inmediatamente."
     ]
   },
   {
     "id": 6,
     "name": "Greek Salad",
+    "name_es": "Ensalada Griega",
     "cuisine": "Greek",
+    "cuisine_es": "Griega",
     "prepTime": 15,
     "cookTime": 0,
     "servings": 4,
     "difficulty": "Easy",
+    "difficulty_es": "Fácil",
     "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400",
     "ingredients": [
       "4 large tomatoes, cut into wedges",
@@ -168,22 +284,44 @@
       "Dried oregano",
       "Salt and pepper"
     ],
+    "ingredients_es": [
+      "4 tomates grandes, cortados en gajos",
+      "1 pepino, en rodajas",
+      "1 cebolla morada, en rodajas finas",
+      "1 pimiento verde, en rodajas",
+      "200g de queso feta, en cubos",
+      "Aceitunas Kalamata",
+      "Aceite de oliva extra virgen",
+      "Vinagre de vino tinto",
+      "Orégano seco",
+      "Sal y pimienta"
+    ],
     "instructions": [
       "Combine tomatoes, cucumber, onion, and bell pepper in a large bowl.",
       "Add olives and feta cheese.",
       "Drizzle with olive oil and red wine vinegar.",
       "Season with oregano, salt, and pepper.",
       "Toss gently and serve immediately."
+    ],
+    "instructions_es": [
+      "Combina los tomates, el pepino, la cebolla y el pimiento en un tazón grande.",
+      "Agrega las aceitunas y el queso feta.",
+      "Rocía con aceite de oliva y vinagre de vino tinto.",
+      "Sazona con orégano, sal y pimienta.",
+      "Mezcla suavemente y sirve inmediatamente."
     ]
   },
   {
     "id": 7,
     "name": "Beef Tacos",
+    "name_es": "Tacos de Res",
     "cuisine": "Mexican",
+    "cuisine_es": "Mexicana",
     "prepTime": 10,
     "cookTime": 20,
     "servings": 4,
     "difficulty": "Easy",
+    "difficulty_es": "Fácil",
     "image": "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=400",
     "ingredients": [
       "500g ground beef",
@@ -197,6 +335,18 @@
       "Diced onions",
       "Fresh cilantro"
     ],
+    "ingredients_es": [
+      "500g de carne molida de res",
+      "1 sobre de condimento para tacos",
+      "8 tortillas o conchas para tacos",
+      "Lechuga rallada",
+      "Tomates en cubos",
+      "Queso cheddar rallado",
+      "Crema agria",
+      "Salsa",
+      "Cebollas en cubos",
+      "Cilantro fresco"
+    ],
     "instructions": [
       "Brown ground beef in a large skillet over medium-high heat.",
       "Drain excess fat.",
@@ -205,16 +355,28 @@
       "Warm taco shells according to package directions.",
       "Fill shells with beef and desired toppings.",
       "Serve with lime wedges."
+    ],
+    "instructions_es": [
+      "Dora la carne molida en una sartén grande a fuego medio-alto.",
+      "Escurre el exceso de grasa.",
+      "Agrega el condimento para tacos y agua según las instrucciones del paquete.",
+      "Cocina a fuego lento durante 5 minutos hasta que espese.",
+      "Calienta las tortillas según las instrucciones del paquete.",
+      "Rellena las tortillas con carne y los ingredientes deseados.",
+      "Sirve con gajos de lima."
     ]
   },
   {
     "id": 8,
     "name": "Chicken Teriyaki",
+    "name_es": "Pollo Teriyaki",
     "cuisine": "Japanese",
+    "cuisine_es": "Japonesa",
     "prepTime": 15,
     "cookTime": 20,
     "servings": 4,
     "difficulty": "Easy",
+    "difficulty_es": "Fácil",
     "image": "https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=400",
     "ingredients": [
       "600g chicken thighs, boneless",
@@ -228,6 +390,18 @@
       "Green onions, sliced",
       "Steamed rice for serving"
     ],
+    "ingredients_es": [
+      "600g de muslos de pollo, deshuesados",
+      "1/2 taza de salsa de soja",
+      "1/4 taza de mirin",
+      "2 cucharadas de sake",
+      "3 cucharadas de azúcar",
+      "2 dientes de ajo, picados",
+      "1 cucharadita de jengibre, rallado",
+      "Semillas de sésamo",
+      "Cebollas verdes, en rodajas",
+      "Arroz al vapor para servir"
+    ],
     "instructions": [
       "Cut chicken into bite-sized pieces.",
       "Mix soy sauce, mirin, sake, sugar, garlic, and ginger for the teriyaki sauce.",
@@ -237,16 +411,29 @@
       "Simmer until sauce thickens and chicken is cooked through.",
       "Garnish with sesame seeds and green onions.",
       "Serve over steamed rice."
+    ],
+    "instructions_es": [
+      "Corta el pollo en trozos del tamaño de un bocado.",
+      "Mezcla la salsa de soja, el mirin, el sake, el azúcar, el ajo y el jengibre para la salsa teriyaki.",
+      "Calienta aceite en una sartén grande a fuego medio-alto.",
+      "Cocina el pollo hasta que esté dorado por todos lados.",
+      "Vierte la salsa teriyaki sobre el pollo.",
+      "Cocina a fuego lento hasta que la salsa espese y el pollo esté bien cocido.",
+      "Decora con semillas de sésamo y cebollas verdes.",
+      "Sirve sobre arroz al vapor."
     ]
   },
   {
     "id": 9,
     "name": "Caesar Salad",
+    "name_es": "Ensalada César",
     "cuisine": "American",
+    "cuisine_es": "Americana",
     "prepTime": 15,
     "cookTime": 10,
     "servings": 4,
     "difficulty": "Easy",
+    "difficulty_es": "Fácil",
     "image": "https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400",
     "ingredients": [
       "2 romaine lettuce heads",
@@ -260,6 +447,18 @@
       "1/2 cup olive oil",
       "Salt and pepper"
     ],
+    "ingredients_es": [
+      "2 lechugas romanas",
+      "1 taza de crutones",
+      "1/2 taza de queso parmesano, en láminas",
+      "Para el aderezo: 2 yemas de huevo",
+      "2 dientes de ajo, picados",
+      "2 cucharaditas de mostaza Dijon",
+      "4 filetes de anchoa",
+      "Jugo de 1 limón",
+      "1/2 taza de aceite de oliva",
+      "Sal y pimienta"
+    ],
     "instructions": [
       "Wash and dry romaine lettuce, then tear into bite-sized pieces.",
       "For dressing: blend egg yolks, garlic, mustard, anchovies, and lemon juice.",
@@ -268,16 +467,28 @@
       "Toss lettuce with dressing.",
       "Add croutons and Parmesan cheese.",
       "Serve immediately."
+    ],
+    "instructions_es": [
+      "Lava y seca la lechuga romana, luego desgárrala en trozos del tamaño de un bocado.",
+      "Para el aderezo: licúa las yemas de huevo, el ajo, la mostaza, las anchoas y el jugo de limón.",
+      "Rocía lentamente el aceite de oliva mientras licúas hasta emulsionar.",
+      "Sazona con sal y pimienta.",
+      "Mezcla la lechuga con el aderezo.",
+      "Agrega los crutones y el queso parmesano.",
+      "Sirve inmediatamente."
     ]
   },
   {
     "id": 10,
     "name": "Chocolate Chip Cookies",
+    "name_es": "Galletas con Chispas de Chocolate",
     "cuisine": "American",
+    "cuisine_es": "Americana",
     "prepTime": 15,
     "cookTime": 12,
     "servings": 24,
     "difficulty": "Easy",
+    "difficulty_es": "Fácil",
     "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=400",
     "ingredients": [
       "2 1/4 cups all-purpose flour",
@@ -290,6 +501,17 @@
       "2 tsp vanilla extract",
       "2 cups chocolate chips"
     ],
+    "ingredients_es": [
+      "2 1/4 tazas de harina para todo uso",
+      "1 cucharadita de bicarbonato de sodio",
+      "1 cucharadita de sal",
+      "1 taza de mantequilla, ablandada",
+      "3/4 taza de azúcar granulada",
+      "3/4 taza de azúcar morena",
+      "2 huevos grandes",
+      "2 cucharaditas de extracto de vainilla",
+      "2 tazas de chispas de chocolate"
+    ],
     "instructions": [
       "Preheat oven to 375°F (190°C).",
       "Mix flour, baking soda, and salt in a bowl.",
@@ -300,6 +522,17 @@
       "Drop rounded tablespoons of dough onto ungreased baking sheets.",
       "Bake for 9-12 minutes until golden brown.",
       "Cool on baking sheet for 2 minutes, then transfer to wire rack."
+    ],
+    "instructions_es": [
+      "Precalienta el horno a 190°C (375°F).",
+      "Mezcla la harina, el bicarbonato de sodio y la sal en un tazón.",
+      "En otro tazón, bate la mantequilla y ambos azúcares hasta que quede esponjoso.",
+      "Incorpora los huevos y la vainilla.",
+      "Incorpora gradualmente la mezcla de harina.",
+      "Agrega las chispas de chocolate.",
+      "Coloca cucharadas redondeadas de masa en bandejas para hornear sin engrasar.",
+      "Hornea durante 9-12 minutos hasta que estén doradas.",
+      "Deja enfriar en la bandeja durante 2 minutos, luego transfiere a una rejilla."
     ]
   }
 ]

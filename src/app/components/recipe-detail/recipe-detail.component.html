@@ -1,19 +1,22 @@
-<div class="recipe-detail-container" *ngIf="recipe">
-  <button class="back-button" (click)="goBack()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="19" y1="12" x2="5" y2="12"></line>
-      <polyline points="12 19 5 12 12 5"></polyline>
-    </svg>
-    Back to Recipes
-  </button>
+<div class="recipe-detail-container" *ngIf="recipe()">
+  <div class="top-controls">
+    <button class="back-button" (click)="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      {{ translations().backToRecipes }}
+    </button>
+    <app-language-toggle></app-language-toggle>
+  </div>
 
   <div class="recipe-header">
     <div class="recipe-header-image">
-      <img [src]="recipe.image" [alt]="recipe.name" />
+      <img [src]="recipe().image" [alt]="recipe().name" />
     </div>
     <div class="recipe-header-content">
-      <div class="cuisine-badge">{{ recipe.cuisine }}</div>
-      <h1>{{ recipe.name }}</h1>
+      <div class="cuisine-badge">{{ recipe().cuisine }}</div>
+      <h1>{{ recipe().name }}</h1>
 
       <div class="recipe-stats">
         <div class="stat">
@@ -22,8 +25,8 @@
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
           <div>
-            <div class="stat-label">Prep Time</div>
-            <div class="stat-value">{{ recipe.prepTime }} min</div>
+            <div class="stat-label">{{ translations().prepTime }}</div>
+            <div class="stat-value">{{ recipe().prepTime }} {{ translations().minutes }}</div>
           </div>
         </div>
 
@@ -33,8 +36,8 @@
             <polyline points="12 6 12 12 16 14"></polyline>
           </svg>
           <div>
-            <div class="stat-label">Cook Time</div>
-            <div class="stat-value">{{ recipe.cookTime }} min</div>
+            <div class="stat-label">{{ translations().cookTime }}</div>
+            <div class="stat-value">{{ recipe().cookTime }} {{ translations().minutes }}</div>
           </div>
         </div>
 
@@ -46,8 +49,8 @@
             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
           </svg>
           <div>
-            <div class="stat-label">Servings</div>
-            <div class="stat-value">{{ recipe.servings }}</div>
+            <div class="stat-label">{{ translations().servings }}</div>
+            <div class="stat-value">{{ recipe().servings }}</div>
           </div>
         </div>
 
@@ -61,8 +64,8 @@
             <line x1="3" y1="18" x2="3.01" y2="18"></line>
           </svg>
           <div>
-            <div class="stat-label">Difficulty</div>
-            <div class="stat-value">{{ recipe.difficulty }}</div>
+            <div class="stat-label">{{ translations().difficulty }}</div>
+            <div class="stat-value">{{ recipe().difficulty }}</div>
           </div>
         </div>
       </div>
@@ -71,9 +74,9 @@
 
   <div class="recipe-body">
     <div class="ingredients-section">
-      <h2>Ingredients</h2>
+      <h2>{{ translations().ingredients }}</h2>
       <ul class="ingredients-list">
-        <li *ngFor="let ingredient of recipe.ingredients">
+        <li *ngFor="let ingredient of recipe().ingredients">
           <span class="checkbox"></span>
           {{ ingredient }}
         </li>
@@ -81,9 +84,9 @@
     </div>
 
     <div class="instructions-section">
-      <h2>Instructions</h2>
+      <h2>{{ translations().instructions }}</h2>
       <ol class="instructions-list">
-        <li *ngFor="let instruction of recipe.instructions; let i = index">
+        <li *ngFor="let instruction of recipe().instructions; let i = index">
           <span class="step-number">{{ i + 1 }}</span>
           <p>{{ instruction }}</p>
         </li>
@@ -92,7 +95,7 @@
   </div>
 </div>
 
-<div class="not-found" *ngIf="!recipe">
-  <h2>Recipe not found</h2>
-  <button class="back-button" (click)="goBack()">Back to Recipes</button>
+<div class="not-found" *ngIf="!recipe()">
+  <h2>{{ translations().recipeNotFound }}</h2>
+  <button class="back-button" (click)="goBack()">{{ translations().backToRecipes }}</button>
 </div>
