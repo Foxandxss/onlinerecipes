@@ -31,6 +31,7 @@ export class RecipeDetailComponent {
   cookingMode = signal<boolean>(false);
   checkedIngredients = signal<Set<number>>(new Set());
   checkedSteps = signal<Set<number>>(new Set());
+  activeTabIndex = signal<number>(0);
 
   constructor() {
     const idParam = this.route.snapshot.paramMap.get('id');

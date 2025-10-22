@@ -126,7 +126,7 @@
 
   <!-- Mobile view: tabs -->
   <div class="recipe-body mobile-view">
-    <p-tabs>
+    <p-tabs [(value)]="activeTabIndex">
       <p-tablist>
         <p-tab value="0">{{ translations().ingredients }}</p-tab>
         <p-tab value="1">{{ translations().instructions }}</p-tab>
