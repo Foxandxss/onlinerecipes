@@ -88,13 +88,13 @@
   <div class="recipe-body desktop-view">
     <div class="ingredients-section">
       <h2>{{ translations().ingredients }}</h2>
-      <ul class="ingredients-list">
+      <ul class="ingredients-list" [class.cooking-mode]="cookingMode()">
         <li *ngFor="let ingredient of recipe().ingredients; let i = index"
             [class.checked]="cookingMode() && isIngredientChecked(i)"
             (click)="cookingMode() ? toggleIngredient(i) : null"
             [class.clickable]="cookingMode()">
-          <span class="checkbox" [class.checked]="cookingMode() && isIngredientChecked(i)">
-            <svg *ngIf="cookingMode() && isIngredientChecked(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <span *ngIf="cookingMode()" class="checkbox" [class.checked]="isIngredientChecked(i)">
+            <svg *ngIf="isIngredientChecked(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </span>
@@ -133,13 +133,13 @@
       </p-tablist>
       <p-tabpanels>
         <p-tabpanel value="0">
-          <ul class="ingredients-list">
+          <ul class="ingredients-list" [class.cooking-mode]="cookingMode()">
             <li *ngFor="let ingredient of recipe().ingredients; let i = index"
                 [class.checked]="cookingMode() && isIngredientChecked(i)"
                 (click)="cookingMode() ? toggleIngredient(i) : null"
                 [class.clickable]="cookingMode()">
-              <span class="checkbox" [class.checked]="cookingMode() && isIngredientChecked(i)">
-                <svg *ngIf="cookingMode() && isIngredientChecked(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <span *ngIf="cookingMode()" class="checkbox" [class.checked]="isIngredientChecked(i)">
+                <svg *ngIf="isIngredientChecked(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </span>

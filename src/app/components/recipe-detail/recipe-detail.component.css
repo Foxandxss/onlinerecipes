@@ -184,6 +184,16 @@
   margin: 0;
 }
 
+/* When NOT in cooking mode, show disc bullets */
+.ingredients-list:not(.cooking-mode) {
+  list-style: disc;
+  padding-left: 2rem;
+}
+
+.ingredients-list:not(.cooking-mode) li {
+  display: list-item;
+}
+
 .ingredients-list li {
   display: flex;
   align-items: center;
