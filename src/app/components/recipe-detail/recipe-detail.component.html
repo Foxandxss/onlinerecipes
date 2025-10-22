@@ -7,7 +7,19 @@
       </svg>
       {{ translations().backToRecipes }}
     </button>
-    <app-language-toggle></app-language-toggle>
+    <div class="right-controls">
+      <button
+        class="cooking-mode-button"
+        (click)="toggleCookingMode()"
+        [class.active]="cookingMode()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path>
+          <line x1="6" y1="17" x2="18" y2="17"></line>
+        </svg>
+        {{ cookingMode() ? translations().exitCooking : translations().startCooking }}
+      </button>
+      <app-language-toggle></app-language-toggle>
+    </div>
   </div>
 
   <div class="recipe-header">
@@ -72,13 +84,21 @@
     </div>
   </div>
 
-  <div class="recipe-body">
+  <!-- Desktop view: side by side -->
+  <div class="recipe-body desktop-view">
     <div class="ingredients-section">
       <h2>{{ translations().ingredients }}</h2>
       <ul class="ingredients-list">
-        <li *ngFor="let ingredient of recipe().ingredients">
-          <span class="checkbox"></span>
-          {{ ingredient }}
+        <li *ngFor="let ingredient of recipe().ingredients; let i = index"
+            [class.checked]="cookingMode() && isIngredientChecked(i)"
+            (click)="cookingMode() ? toggleIngredient(i) : null"
+            [class.clickable]="cookingMode()">
+          <span class="checkbox" [class.checked]="cookingMode() && isIngredientChecked(i)">
+            <svg *ngIf="cookingMode() && isIngredientChecked(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+          <span class="ingredient-text">{{ ingredient }}</span>
         </li>
       </ul>
     </div>
@@ -86,12 +106,67 @@
     <div class="instructions-section">
       <h2>{{ translations().instructions }}</h2>
       <ol class="instructions-list">
-        <li *ngFor="let instruction of recipe().instructions; let i = index">
-          <span class="step-number">{{ i + 1 }}</span>
-          <p>{{ instruction }}</p>
+        <li *ngFor="let instruction of recipe().instructions; let i = index"
+            [class.checked]="cookingMode() && isStepChecked(i)"
+            (click)="cookingMode() ? toggleStep(i) : null"
+            [class.clickable]="cookingMode()">
+          <div class="step-content">
+            <span class="step-number" [class.checked]="cookingMode() && isStepChecked(i)">
+              <svg *ngIf="cookingMode() && isStepChecked(i)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span *ngIf="!cookingMode() || !isStepChecked(i)">{{ i + 1 }}</span>
+            </span>
+            <p>{{ instruction }}</p>
+          </div>
         </li>
       </ol>
     </div>
+  </div>
+
+  <!-- Mobile view: tabs -->
+  <div class="recipe-body mobile-view">
+    <p-tabs>
+      <p-tablist>
+        <p-tab value="0">{{ translations().ingredients }}</p-tab>
+        <p-tab value="1">{{ translations().instructions }}</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <ul class="ingredients-list">
+            <li *ngFor="let ingredient of recipe().ingredients; let i = index"
+                [class.checked]="cookingMode() && isIngredientChecked(i)"
+                (click)="cookingMode() ? toggleIngredient(i) : null"
+                [class.clickable]="cookingMode()">
+              <span class="checkbox" [class.checked]="cookingMode() && isIngredientChecked(i)">
+                <svg *ngIf="cookingMode() && isIngredientChecked(i)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="ingredient-text">{{ ingredient }}</span>
+            </li>
+          </ul>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <ol class="instructions-list">
+            <li *ngFor="let instruction of recipe().instructions; let i = index"
+                [class.checked]="cookingMode() && isStepChecked(i)"
+                (click)="cookingMode() ? toggleStep(i) : null"
+                [class.clickable]="cookingMode()">
+              <div class="step-content">
+                <span class="step-number" [class.checked]="cookingMode() && isStepChecked(i)">
+                  <svg *ngIf="cookingMode() && isStepChecked(i)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span *ngIf="!cookingMode() || !isStepChecked(i)">{{ i + 1 }}</span>
+                </span>
+                <p>{{ instruction }}</p>
+              </div>
+            </li>
+          </ol>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
   </div>
 </div>
 

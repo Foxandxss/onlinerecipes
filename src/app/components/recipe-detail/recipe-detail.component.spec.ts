@@ -92,7 +92,9 @@ describe('RecipeDetailComponent', () => {
 
   it('should display ingredients in English by default', async () => {
     await renderComponent();
-    expect(screen.getByText(/400g spaghetti/i)).toBeInTheDocument();
+    const ingredients = screen.getAllByText(/400g spaghetti/i);
+    expect(ingredients.length).toBeGreaterThan(0);
+    expect(ingredients[0]).toBeInTheDocument();
   });
 
   it('should update recipe name to Spanish when language changes', async () => {
@@ -133,7 +135,9 @@ describe('RecipeDetailComponent', () => {
 
     languageService.setLanguage('es');
 
-    expect(await screen.findByText(/400g de espagueti/i)).toBeInTheDocument();
+    const ingredients = await screen.findAllByText(/400g de espagueti/i);
+    expect(ingredients.length).toBeGreaterThan(0);
+    expect(ingredients[0]).toBeInTheDocument();
   });
 
   it('should update instructions to Spanish when language changes', async () => {
@@ -141,7 +145,9 @@ describe('RecipeDetailComponent', () => {
 
     languageService.setLanguage('es');
 
-    expect(await screen.findByText(/Hierve/i)).toBeInTheDocument();
+    const instructions = await screen.findAllByText(/Hierve/i);
+    expect(instructions.length).toBeGreaterThan(0);
+    expect(instructions[0]).toBeInTheDocument();
   });
 
   it('should update UI labels to Spanish', async () => {

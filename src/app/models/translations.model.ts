@@ -13,6 +13,9 @@ export interface UITranslations {
   easy: string;
   medium: string;
   hard: string;
+  cookingMode: string;
+  startCooking: string;
+  exitCooking: string;
 }
 
 export type Language = 'en' | 'es';
