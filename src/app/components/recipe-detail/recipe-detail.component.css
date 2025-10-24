@@ -345,6 +345,130 @@
   margin: 0 auto;
 }
 
+/* Dark mode styles */
+:host-context(.app-dark) .recipe-detail-container {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .back-button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .back-button:hover {
+  background: #334155;
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+
+:host-context(.app-dark) .cooking-mode-button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .cooking-mode-button:hover {
+  background: #334155;
+  border-color: #60a5fa;
+  color: #60a5fa;
+}
+
+:host-context(.app-dark) .cooking-mode-button.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+:host-context(.app-dark) .cooking-mode-button.active:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+:host-context(.app-dark) .recipe-header {
+  background: #1e293b;
+}
+
+:host-context(.app-dark) .cuisine-badge {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .recipe-header-content h1 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) .stat-label {
+  color: #cbd5e1;
+}
+
+:host-context(.app-dark) .stat-value {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .stat svg {
+  color: #60a5fa;
+}
+
+:host-context(.app-dark) .ingredients-section,
+:host-context(.app-dark) .instructions-section {
+  background: #1e293b;
+}
+
+:host-context(.app-dark) .ingredients-section h2,
+:host-context(.app-dark) .instructions-section h2 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) .ingredients-list li,
+:host-context(.app-dark) .instructions-list li {
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .ingredients-list li:hover,
+:host-context(.app-dark) .instructions-list li:hover {
+  background: #334155;
+}
+
+:host-context(.app-dark) .checkbox {
+  border-color: #cbd5e1;
+}
+
+:host-context(.app-dark) .checkbox.checked {
+  background: #3b82f6;
+  border-color: #3b82f6;
+}
+
+:host-context(.app-dark) .step-number {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .step-number.checked {
+  background: #3b82f6;
+}
+
+:host-context(.app-dark) .not-found {
+  background: #1e293b;
+}
+
+:host-context(.app-dark) .not-found h2 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) ::ng-deep .mobile-view .p-tabs {
+  background: #1e293b;
+}
+
+:host-context(.app-dark) ::ng-deep .mobile-view .p-tablist {
+  background: #0f172a;
+  border-bottom-color: #334155;
+}
+
+:host-context(.app-dark) ::ng-deep .mobile-view .p-tabpanels {
+  background: #1e293b;
+}
+
 @media (max-width: 768px) {
   .recipe-detail-container {
     padding: 1rem;

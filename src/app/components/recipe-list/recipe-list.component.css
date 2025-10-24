@@ -16,6 +16,12 @@
   flex: 1;
 }
 
+.toggle-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 h1 {
   font-size: 2.5rem;
   color: #333;
@@ -125,6 +131,45 @@ h1 {
   color: #856404;
 }
 
+/* Dark mode styles */
+:host-context(.app-dark) .recipe-list-container {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) h1 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) .subtitle {
+  color: #cbd5e1;
+}
+
+:host-context(.app-dark) .recipe-card {
+  background: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(.app-dark) .recipe-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+:host-context(.app-dark) .cuisine-badge {
+  background: rgba(30, 41, 59, 0.95);
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .recipe-content h2 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) .recipe-meta {
+  color: #cbd5e1;
+}
+
+:host-context(.app-dark) .meta-item svg {
+  color: #60a5fa;
+}
+
 @media (max-width: 768px) {
   .recipe-list-container {
     padding: 1rem;
@@ -137,5 +182,9 @@ h1 {
   .recipe-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .toggle-buttons {
+    flex-direction: column;
   }
 }
