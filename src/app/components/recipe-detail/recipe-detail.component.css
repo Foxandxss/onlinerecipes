@@ -10,6 +10,14 @@
   align-items: center;
   margin-bottom: 2rem;
   gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.right-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .back-button {
@@ -30,6 +38,38 @@
   background: #f5f5f5;
   border-color: #4a90e2;
   color: #4a90e2;
+}
+
+.cooking-mode-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cooking-mode-button:hover {
+  background: #f5f5f5;
+  border-color: #4a90e2;
+  color: #4a90e2;
+}
+
+.cooking-mode-button.active {
+  background: #4a90e2;
+  border-color: #4a90e2;
+  color: white;
+}
+
+.cooking-mode-button.active:hover {
+  background: #3a7bc8;
+  border-color: #3a7bc8;
 }
 
 .recipe-header {
@@ -111,6 +151,16 @@
   gap: 2rem;
 }
 
+/* Desktop view visible by default */
+.desktop-view {
+  display: grid;
+}
+
+/* Mobile view hidden by default */
+.mobile-view {
+  display: none;
+}
+
 .ingredients-section,
 .instructions-section {
   background: white;
@@ -134,6 +184,16 @@
   margin: 0;
 }
 
+/* When NOT in cooking mode, show disc bullets */
+.ingredients-list:not(.cooking-mode) {
+  list-style: disc;
+  padding-left: 2rem;
+}
+
+.ingredients-list:not(.cooking-mode) li {
+  display: list-item;
+}
+
 .ingredients-list li {
   display: flex;
   align-items: center;
@@ -142,10 +202,28 @@
   border-bottom: 1px solid #f0f0f0;
   font-size: 1rem;
   color: #333;
+  transition: all 0.3s ease;
 }
 
 .ingredients-list li:last-child {
   border-bottom: none;
+}
+
+.ingredients-list li.clickable {
+  cursor: pointer;
+}
+
+.ingredients-list li.clickable:hover {
+  background: #f8f9fa;
+  padding-left: 0.5rem;
+}
+
+.ingredients-list li.checked {
+  opacity: 0.5;
+}
+
+.ingredients-list li.checked .ingredient-text {
+  text-decoration: line-through;
 }
 
 .checkbox {
@@ -154,6 +232,19 @@
   border: 2px solid #4a90e2;
   border-radius: 4px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.checkbox.checked {
+  background: #4a90e2;
+  border-color: #4a90e2;
+}
+
+.checkbox svg {
+  color: white;
 }
 
 .instructions-list {
@@ -164,11 +255,10 @@
 }
 
 .instructions-list li {
-  display: flex;
-  gap: 1.5rem;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
 }
 
 .instructions-list li:last-child {
@@ -177,10 +267,36 @@
   border-bottom: none;
 }
 
+.instructions-list li.clickable {
+  cursor: pointer;
+}
+
+.instructions-list li.clickable:hover {
+  background: #f8f9fa;
+  padding: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-radius: 8px;
+}
+
+.instructions-list li.checked {
+  opacity: 0.5;
+}
+
+.instructions-list li.checked p {
+  text-decoration: line-through;
+}
+
+.step-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
 .step-number {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 40px;
   width: 40px;
   height: 40px;
   background: #4a90e2;
@@ -189,6 +305,15 @@
   font-weight: 700;
   font-size: 1.1rem;
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.step-number.checked {
+  background: #4a90e2;
+}
+
+.step-number svg {
+  color: white;
 }
 
 .instructions-list li p {
@@ -197,6 +322,7 @@
   color: #333;
   font-size: 1rem;
   padding-top: 0.5rem;
+  flex: 1;
 }
 
 .not-found {
@@ -224,6 +350,15 @@
     padding: 1rem;
   }
 
+  .top-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .right-controls {
+    justify-content: space-between;
+  }
+
   .recipe-header-image {
     height: 250px;
   }
@@ -240,6 +375,16 @@
     grid-template-columns: 1fr 1fr;
   }
 
+  /* Hide desktop view on mobile */
+  .desktop-view {
+    display: none !important;
+  }
+
+  /* Show mobile view on mobile */
+  .mobile-view {
+    display: block !important;
+  }
+
   .recipe-body {
     grid-template-columns: 1fr;
   }
@@ -247,5 +392,36 @@
   .ingredients-section,
   .instructions-section {
     padding: 1.5rem;
+  }
+
+  /* PrimeNG Tabs customization for mobile */
+  ::ng-deep .mobile-view .p-tabs {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  ::ng-deep .mobile-view .p-tablist {
+    background: #f8f9fa;
+    border-bottom: 2px solid #e0e0e0;
+    justify-content: center;
+  }
+
+  ::ng-deep .mobile-view .p-tab {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  ::ng-deep .mobile-view .p-tabpanels {
+    padding: 1.5rem;
+    background: white;
+  }
+
+  ::ng-deep .mobile-view .p-tabpanel {
+    padding: 0;
   }
 }

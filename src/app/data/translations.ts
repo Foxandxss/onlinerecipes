@@ -15,7 +15,10 @@ export const translations: Record<'en' | 'es', UITranslations> = {
     minutes: 'min',
     easy: 'Easy',
     medium: 'Medium',
-    hard: 'Hard'
+    hard: 'Hard',
+    cookingMode: 'Cooking Mode',
+    startCooking: 'Start Cooking',
+    exitCooking: 'Exit Cooking Mode'
   },
   es: {
     title: 'Recetas Online',
@@ -31,6 +34,9 @@ export const translations: Record<'en' | 'es', UITranslations> = {
     minutes: 'min',
     easy: 'Fácil',
     medium: 'Media',
-    hard: 'Difícil'
+    hard: 'Difícil',
+    cookingMode: 'Modo de Cocinar',
+    startCooking: 'Empezar a Cocinar',
+    exitCooking: 'Salir del Modo Cocinar'
   }
 };
