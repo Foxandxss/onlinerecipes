@@ -352,8 +352,8 @@
 
 :host-context(.app-dark) .back-button {
   background: #1e293b;
-  border-color: #334155;
-  color: #e2e8f0;
+  border-color: #475569;
+  color: #f1f5f9;
 }
 
 :host-context(.app-dark) .back-button:hover {
@@ -362,10 +362,15 @@
   color: #60a5fa;
 }
 
+:host-context(.app-dark) .back-button:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
 :host-context(.app-dark) .cooking-mode-button {
   background: #1e293b;
-  border-color: #334155;
-  color: #e2e8f0;
+  border-color: #475569;
+  color: #f1f5f9;
 }
 
 :host-context(.app-dark) .cooking-mode-button:hover {
@@ -374,9 +379,15 @@
   color: #60a5fa;
 }
 
+:host-context(.app-dark) .cooking-mode-button:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
 :host-context(.app-dark) .cooking-mode-button.active {
   background: #3b82f6;
   border-color: #3b82f6;
+  color: #ffffff;
 }
 
 :host-context(.app-dark) .cooking-mode-button.active:hover {
@@ -386,11 +397,13 @@
 
 :host-context(.app-dark) .recipe-header {
   background: #1e293b;
+  border: 1px solid #475569;
 }
 
 :host-context(.app-dark) .cuisine-badge {
-  background: #334155;
-  color: #e2e8f0;
+  background: #475569;
+  color: #f1f5f9;
+  border: 1px solid #64748b;
 }
 
 :host-context(.app-dark) .recipe-header-content h1 {
@@ -398,11 +411,11 @@
 }
 
 :host-context(.app-dark) .stat-label {
-  color: #cbd5e1;
+  color: #e2e8f0;
 }
 
 :host-context(.app-dark) .stat-value {
-  color: #e2e8f0;
+  color: #f1f5f9;
 }
 
 :host-context(.app-dark) .stat svg {
@@ -412,6 +425,7 @@
 :host-context(.app-dark) .ingredients-section,
 :host-context(.app-dark) .instructions-section {
   background: #1e293b;
+  border-color: #475569;
 }
 
 :host-context(.app-dark) .ingredients-section h2,
@@ -421,8 +435,8 @@
 
 :host-context(.app-dark) .ingredients-list li,
 :host-context(.app-dark) .instructions-list li {
-  border-color: #334155;
-  color: #e2e8f0;
+  border-color: #475569;
+  color: #f1f5f9;
 }
 
 :host-context(.app-dark) .ingredients-list li:hover,
@@ -430,8 +444,15 @@
   background: #334155;
 }
 
+:host-context(.app-dark) .ingredients-list li:focus,
+:host-context(.app-dark) .instructions-list li:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: -2px;
+}
+
 :host-context(.app-dark) .checkbox {
-  border-color: #cbd5e1;
+  border-color: #e2e8f0;
+  background: transparent;
 }
 
 :host-context(.app-dark) .checkbox.checked {
@@ -440,16 +461,20 @@
 }
 
 :host-context(.app-dark) .step-number {
-  background: #334155;
-  color: #e2e8f0;
+  background: #475569;
+  color: #f1f5f9;
+  border: 1px solid #64748b;
 }
 
 :host-context(.app-dark) .step-number.checked {
   background: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
 }
 
 :host-context(.app-dark) .not-found {
   background: #1e293b;
+  border: 1px solid #475569;
 }
 
 :host-context(.app-dark) .not-found h2 {
@@ -458,11 +483,25 @@
 
 :host-context(.app-dark) ::ng-deep .mobile-view .p-tabs {
   background: #1e293b;
+  border: 1px solid #475569;
 }
 
 :host-context(.app-dark) ::ng-deep .mobile-view .p-tablist {
   background: #0f172a;
-  border-bottom-color: #334155;
+  border-bottom-color: #475569;
+}
+
+:host-context(.app-dark) ::ng-deep .mobile-view .p-tab {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) ::ng-deep .mobile-view .p-tab:hover {
+  color: #60a5fa;
+}
+
+:host-context(.app-dark) ::ng-deep .mobile-view .p-tab:focus {
+  outline: 2px solid #60a5fa;
+  outline-offset: -2px;
 }
 
 :host-context(.app-dark) ::ng-deep .mobile-view .p-tabpanels {
