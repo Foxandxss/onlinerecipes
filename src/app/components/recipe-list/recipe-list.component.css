@@ -16,6 +16,12 @@
   flex: 1;
 }
 
+.toggle-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
 h1 {
   font-size: 2.5rem;
   color: #333;
@@ -125,6 +131,53 @@ h1 {
   color: #856404;
 }
 
+/* Dark mode styles */
+:host-context(.app-dark) .recipe-list-container {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) h1 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) .subtitle {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .recipe-card {
+  background: #1e293b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #475569;
+}
+
+:host-context(.app-dark) .recipe-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border-color: #60a5fa;
+}
+
+:host-context(.app-dark) .recipe-card:focus-within {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+:host-context(.app-dark) .cuisine-badge {
+  background: rgba(51, 65, 85, 0.95);
+  color: #f1f5f9;
+  border: 1px solid #64748b;
+}
+
+:host-context(.app-dark) .recipe-content h2 {
+  color: #f1f5f9;
+}
+
+:host-context(.app-dark) .recipe-meta {
+  color: #e2e8f0;
+}
+
+:host-context(.app-dark) .meta-item svg {
+  color: #60a5fa;
+}
+
 @media (max-width: 768px) {
   .recipe-list-container {
     padding: 1rem;
@@ -137,5 +190,9 @@ h1 {
   .recipe-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .toggle-buttons {
+    flex-direction: column;
   }
 }

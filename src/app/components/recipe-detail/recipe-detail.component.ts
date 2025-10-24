@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
 import { LanguageService } from '../../services/language.service';
 import { LanguageToggleComponent } from '../language-toggle/language-toggle.component';
+import { ThemeToggleComponent } from '../theme-toggle/theme-toggle.component';
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from 'primeng/tabs';
 
 interface CookingProgress {
@@ -13,7 +14,7 @@ interface CookingProgress {
 
 @Component({
   selector: 'app-recipe-detail',
-  imports: [CommonModule, RouterModule, LanguageToggleComponent, Tabs, TabList, Tab, TabPanels, TabPanel],
+  imports: [CommonModule, RouterModule, LanguageToggleComponent, ThemeToggleComponent, Tabs, TabList, Tab, TabPanels, TabPanel],
   templateUrl: './recipe-detail.component.html',
   styleUrl: './recipe-detail.component.css'
 })

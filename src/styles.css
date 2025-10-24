@@ -25,3 +25,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* Dark mode styles */
+.app-dark {
+  color-scheme: dark;
+}
+
+.app-dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
