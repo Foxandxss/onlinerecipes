@@ -1,18 +1,91 @@
 /// <reference types="@testing-library/jest-dom" />
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { render, screen } from '@testing-library/angular';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { TestBed } from '@angular/core/testing';
 import { LanguageService } from '../../services/language.service';
 import { RecipeListComponent } from './recipe-list.component';
+import { MealDBResponse } from '../../models/recipe.model';
 
 describe('RecipeListComponent', () => {
   let languageService: LanguageService;
+  let httpMock: HttpTestingController;
+
+  const mockMealDBRecipe = {
+    idMeal: '52772',
+    strMeal: 'Teriyaki Chicken',
+    strDrinkAlternate: null,
+    strCategory: 'Chicken',
+    strArea: 'Japanese',
+    strInstructions: 'Preheat oven to 350° F.',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg',
+    strTags: 'Meat',
+    strYoutube: 'https://www.youtube.com/watch?v=test',
+    strIngredient1: 'soy sauce',
+    strIngredient2: 'water',
+    strIngredient3: '',
+    strIngredient4: '',
+    strIngredient5: '',
+    strIngredient6: '',
+    strIngredient7: '',
+    strIngredient8: '',
+    strIngredient9: '',
+    strIngredient10: '',
+    strIngredient11: '',
+    strIngredient12: '',
+    strIngredient13: '',
+    strIngredient14: '',
+    strIngredient15: '',
+    strIngredient16: '',
+    strIngredient17: '',
+    strIngredient18: '',
+    strIngredient19: '',
+    strIngredient20: '',
+    strMeasure1: '3/4 cup',
+    strMeasure2: '1/2 cup',
+    strMeasure3: '',
+    strMeasure4: '',
+    strMeasure5: '',
+    strMeasure6: '',
+    strMeasure7: '',
+    strMeasure8: '',
+    strMeasure9: '',
+    strMeasure10: '',
+    strMeasure11: '',
+    strMeasure12: '',
+    strMeasure13: '',
+    strMeasure14: '',
+    strMeasure15: '',
+    strMeasure16: '',
+    strMeasure17: '',
+    strMeasure18: '',
+    strMeasure19: '',
+    strMeasure20: '',
+    strSource: '',
+    strImageSource: null,
+    strCreativeCommonsConfirmed: null,
+    dateModified: null
+  };
 
   const renderComponent = async () => {
     const view = await render(RecipeListComponent, {
-      providers: [provideRouter([])],
+      providers: [
+        provideRouter([]),
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ],
     });
     languageService = view.fixture.componentRef.injector.get(LanguageService);
+    httpMock = TestBed.inject(HttpTestingController);
+
+    // Mock the 20 random recipe requests
+    const requests = httpMock.match('https://www.themealdb.com/api/json/v1/1/random.php');
+    requests.forEach(req => {
+      req.flush({ meals: [mockMealDBRecipe] } as MealDBResponse);
+    });
+
     return view;
   };
 
@@ -22,6 +95,9 @@ describe('RecipeListComponent', () => {
 
   afterEach(() => {
     localStorage.clear();
+    if (httpMock) {
+      httpMock.verify();
+    }
   });
 
   it('should create', async () => {
@@ -45,35 +121,31 @@ describe('RecipeListComponent', () => {
     ).toBeInTheDocument();
   });
 
-  it('should display 10 recipe cards', async () => {
+  it('should display 20 recipe cards from API', async () => {
     const view = await renderComponent();
+    view.fixture.detectChanges();
+    await new Promise(resolve => setTimeout(resolve, 100)); // Wait for async updates
+
     const cards = view.container.querySelectorAll('.recipe-card');
-    expect(cards.length).toBe(10);
+    expect(cards.length).toBe(20);
   });
 
-  it('should display recipe names in English by default', async () => {
-    await renderComponent();
-    expect(
-      screen.getByRole('heading', { level: 2, name: /Spaghetti Carbonara/i })
-    ).toBeInTheDocument();
-  });
-
-  it('should display cuisine badges in English by default', async () => {
+  it('should display recipe with category badge', async () => {
     const view = await renderComponent();
-    const italianBadges = view.container.querySelectorAll('.cuisine-badge');
-    const hasItalian = Array.from(italianBadges).some((badge) =>
-      badge.textContent?.includes('Italian')
-    );
-    expect(hasItalian).toBe(true);
+    view.fixture.detectChanges();
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    const categoryBadges = view.container.querySelectorAll('.category-badge');
+    expect(categoryBadges.length).toBeGreaterThan(0);
   });
 
-  it('should display difficulty in English by default', async () => {
+  it('should display cuisine badges', async () => {
     const view = await renderComponent();
-    const difficulties = view.container.querySelectorAll('.difficulty');
-    const hasMedium = Array.from(difficulties).some((d) =>
-      d.textContent?.includes('Medium')
-    );
-    expect(hasMedium).toBe(true);
+    view.fixture.detectChanges();
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    const cuisineBadges = view.container.querySelectorAll('.cuisine-badge');
+    expect(cuisineBadges.length).toBeGreaterThan(0);
   });
 
   it('should update to Spanish when language changes', async () => {
@@ -88,105 +160,26 @@ describe('RecipeListComponent', () => {
     expect(title).toBeInTheDocument();
   });
 
-  it('should display recipe names in Spanish when language is Spanish', async () => {
-    await renderComponent();
-
-    languageService.setLanguage('es');
-
-    expect(
-      await screen.findByRole('heading', {
-        level: 2,
-        name: /Espagueti Carbonara/i,
-      })
-    ).toBeInTheDocument();
-  });
-
-  it('should display cuisine badges in Spanish when language is Spanish', async () => {
-    const view = await renderComponent();
-
-    languageService.setLanguage('es');
-
-    await screen.findAllByText('Italiana'); // Wait for Spanish (multiple items)
-    const italianBadges = view.container.querySelectorAll('.cuisine-badge');
-    const hasItaliana = Array.from(italianBadges).some((badge) =>
-      badge.textContent?.includes('Italiana')
-    );
-    expect(hasItaliana).toBe(true);
-  });
-
-  it('should display difficulty in Spanish when language is Spanish', async () => {
-    const view = await renderComponent();
-
-    languageService.setLanguage('es');
-
-    await screen.findAllByText('Italiana'); // Wait for Spanish to load (multiple items)
-    const difficulties = view.container.querySelectorAll('.difficulty');
-    const hasMedia = Array.from(difficulties).some((d) =>
-      d.textContent?.includes('Media')
-    );
-    const hasFacil = Array.from(difficulties).some((d) =>
-      d.textContent?.includes('Fácil')
-    );
-    expect(hasMedia || hasFacil).toBe(true);
-  });
-
-  it('should display "servings" label in Spanish', async () => {
-    const view = await renderComponent();
-
-    languageService.setLanguage('es');
-
-    await screen.findAllByText('Italiana'); // Wait for Spanish to load (multiple items)
-    const metaItems = view.container.querySelectorAll('.meta-item');
-    const hasServings = Array.from(metaItems).some((item) =>
-      item.textContent?.toLowerCase().includes('porciones')
-    );
-    expect(hasServings).toBe(true);
-  });
-
   it('should have language toggle component', async () => {
     const view = await renderComponent();
     const toggle = view.container.querySelector('app-language-toggle');
     expect(toggle).toBeTruthy();
   });
 
-  it('should reactively update all recipe content when toggling language', async () => {
-    const view = await renderComponent();
+  it('should reactively update UI labels when toggling language', async () => {
+    await renderComponent();
 
     // Check English content
-    expect(
-      screen.getByRole('heading', { level: 2, name: /Spaghetti Carbonara/i })
-    ).toBeInTheDocument();
-    let badges = view.container.querySelectorAll('.cuisine-badge');
-    expect(
-      Array.from(badges).some((b) => b.textContent?.includes('Italian'))
-    ).toBe(true);
+    expect(screen.getByText(/Online Recipes/i)).toBeInTheDocument();
 
     // Toggle to Spanish
     languageService.setLanguage('es');
 
-    expect(
-      await screen.findByRole('heading', {
-        level: 2,
-        name: /Espagueti Carbonara/i,
-      })
-    ).toBeInTheDocument();
-    badges = view.container.querySelectorAll('.cuisine-badge');
-    expect(
-      Array.from(badges).some((b) => b.textContent?.includes('Italiana'))
-    ).toBe(true);
+    expect(await screen.findByText(/Recetas Online/i)).toBeInTheDocument();
 
     // Toggle back to English
     languageService.setLanguage('en');
 
-    expect(
-      await screen.findByRole('heading', {
-        level: 2,
-        name: /Spaghetti Carbonara/i,
-      })
-    ).toBeInTheDocument();
-    badges = view.container.querySelectorAll('.cuisine-badge');
-    expect(
-      Array.from(badges).some((b) => b.textContent?.includes('Italian'))
-    ).toBe(true);
+    expect(await screen.findByText(/Online Recipes/i)).toBeInTheDocument();
   });
 });

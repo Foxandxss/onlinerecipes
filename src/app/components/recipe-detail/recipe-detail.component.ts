@@ -23,7 +23,7 @@ export class RecipeDetailComponent {
   private recipeService = inject(RecipeService);
   languageService = inject(LanguageService);
 
-  recipeId: number = 0;
+  recipeId: string = '';
   recipe;
   translations = this.languageService.translations;
 
@@ -35,7 +35,7 @@ export class RecipeDetailComponent {
 
   constructor() {
     const idParam = this.route.snapshot.paramMap.get('id');
-    this.recipeId = idParam ? parseInt(idParam, 10) : 0;
+    this.recipeId = idParam || '';
     this.recipe = this.recipeService.getRecipeById(this.recipeId);
 
     // Load cooking progress from localStorage
