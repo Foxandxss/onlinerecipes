@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   gap: 2rem;
 }
 
@@ -27,6 +27,39 @@ h1 {
   text-align: center;
   color: #666;
   font-size: 1.1rem;
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.search-input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #666;
+  pointer-events: none;
 }
 
 .recipe-grid {
@@ -125,6 +158,57 @@ h1 {
   color: #856404;
 }
 
+.loading-container {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1rem;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4a90e2;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.no-more-container,
+.no-results-container {
+  text-align: center;
+  padding: 3rem 0;
+  color: #666;
+  font-size: 1rem;
+}
+
+.category-badge {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.tags {
+  background: #fff3e0;
+  color: #f57c00;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 @media (max-width: 768px) {
   .recipe-list-container {
     padding: 1rem;
@@ -137,5 +221,13 @@ h1 {
   .recipe-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .search-container {
+    margin-bottom: 2rem;
+  }
+
+  .search-input {
+    font-size: 0.95rem;
   }
 }
