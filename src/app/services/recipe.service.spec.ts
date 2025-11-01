@@ -1,132 +1,145 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { LanguageService } from './language.service';
 import { RecipeService } from './recipe.service';
+import { MealDBResponse } from '../models/recipe.model';
 
 describe('RecipeService', () => {
   let service: RecipeService;
-  let languageService: LanguageService;
+  let httpMock: HttpTestingController;
+
+  const mockMealDBRecipe = {
+    idMeal: '52772',
+    strMeal: 'Teriyaki Chicken Casserole',
+    strDrinkAlternate: null,
+    strCategory: 'Chicken',
+    strArea: 'Japanese',
+    strInstructions: 'Preheat oven to 350° F.\nCombine soy sauce, ½ cup water, brown sugar, ginger and garlic in a small saucepan and cover.',
+    strMealThumb: 'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg',
+    strTags: 'Meat,Casserole',
+    strYoutube: 'https://www.youtube.com/watch?v=4aZr5hZXP_s',
+    strIngredient1: 'soy sauce',
+    strIngredient2: 'water',
+    strIngredient3: 'brown sugar',
+    strIngredient4: 'ground ginger',
+    strIngredient5: 'garlic',
+    strIngredient6: 'cornstarch',
+    strIngredient7: 'chicken breasts',
+    strIngredient8: 'stir-fry vegetables',
+    strIngredient9: 'brown rice',
+    strIngredient10: '',
+    strIngredient11: '',
+    strIngredient12: '',
+    strIngredient13: '',
+    strIngredient14: '',
+    strIngredient15: '',
+    strIngredient16: '',
+    strIngredient17: '',
+    strIngredient18: '',
+    strIngredient19: '',
+    strIngredient20: '',
+    strMeasure1: '3/4 cup',
+    strMeasure2: '1/2 cup',
+    strMeasure3: '1/4 cup',
+    strMeasure4: '1/2 teaspoon',
+    strMeasure5: '1/2 teaspoon',
+    strMeasure6: '4 Tablespoons',
+    strMeasure7: '2',
+    strMeasure8: '1 (12 oz.)',
+    strMeasure9: '3 cups',
+    strMeasure10: '',
+    strMeasure11: '',
+    strMeasure12: '',
+    strMeasure13: '',
+    strMeasure14: '',
+    strMeasure15: '',
+    strMeasure16: '',
+    strMeasure17: '',
+    strMeasure18: '',
+    strMeasure19: '',
+    strMeasure20: '',
+    strSource: '',
+    strImageSource: null,
+    strCreativeCommonsConfirmed: null,
+    dateModified: null
+  };
 
   beforeEach(() => {
-    localStorage.clear();
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        RecipeService,
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ]
+    });
     service = TestBed.inject(RecipeService);
-    languageService = TestBed.inject(LanguageService);
+    httpMock = TestBed.inject(HttpTestingController);
+
+    // Mock the 20 random recipe requests made in loadRecipes()
+    const requests = httpMock.match('https://www.themealdb.com/api/json/v1/1/random.php');
+    requests.forEach(req => {
+      req.flush({ meals: [mockMealDBRecipe] } as MealDBResponse);
+    });
   });
 
   afterEach(() => {
-    localStorage.clear();
+    httpMock.verify();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return 10 recipes', () => {
-    const recipes = service.getRecipes;
-    expect(recipes().length).toBe(10);
+  it('should load 20 recipes on initialization', () => {
+    const recipes = service.recipes();
+    expect(recipes.length).toBe(20);
   });
 
-  it('should return recipes in English by default', () => {
-    const recipes = service.getRecipes;
-    const firstRecipe = recipes()[0];
+  it('should transform MealDB recipe correctly', () => {
+    const recipes = service.recipes();
+    const recipe = recipes[0];
 
-    expect(firstRecipe.name).toBe('Spaghetti Carbonara');
-    expect(firstRecipe.cuisine).toBe('Italian');
-    expect(firstRecipe.difficulty).toBe('Medium');
+    expect(recipe.id).toBe('52772');
+    expect(recipe.name).toBe('Teriyaki Chicken Casserole');
+    expect(recipe.cuisine).toBe('Japanese');
+    expect(recipe.category).toBe('Chicken');
+    expect(recipe.image).toBe('https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg');
   });
 
-  it('should return recipes in Spanish when language is Spanish', () => {
-    languageService.setLanguage('es');
-    const recipes = service.getRecipes;
-    const firstRecipe = recipes()[0];
+  it('should combine ingredients with measurements', () => {
+    const recipes = service.recipes();
+    const recipe = recipes[0];
 
-    expect(firstRecipe.name).toBe('Espagueti Carbonara');
-    expect(firstRecipe.cuisine).toBe('Italiana');
-    expect(firstRecipe.difficulty).toBe('Media');
+    expect(recipe.ingredients).toContain('3/4 cup soy sauce');
+    expect(recipe.ingredients).toContain('1/2 cup water');
+    expect(recipe.ingredients).toContain('1/4 cup brown sugar');
   });
 
-  it('should reactively update recipes when language changes', () => {
-    const recipes = service.getRecipes;
-    let firstRecipe = recipes()[0];
-    expect(firstRecipe.name).toBe('Spaghetti Carbonara');
+  it('should parse tags correctly', () => {
+    const recipes = service.recipes();
+    const recipe = recipes[0];
 
-    languageService.setLanguage('es');
-    firstRecipe = recipes()[0];
-    expect(firstRecipe.name).toBe('Espagueti Carbonara');
+    expect(recipe.tags).toBeDefined();
+    expect(recipe.tags).toContain('Meat');
+    expect(recipe.tags).toContain('Casserole');
+  });
+
+  it('should include YouTube URL when available', () => {
+    const recipes = service.recipes();
+    const recipe = recipes[0];
+
+    expect(recipe.youtubeUrl).toBe('https://www.youtube.com/watch?v=4aZr5hZXP_s');
   });
 
   it('should find recipe by id', () => {
-    const recipe = service.getRecipeById(1);
-    expect(recipe()?.id).toBe(1);
-    expect(recipe()?.name).toBe('Spaghetti Carbonara');
+    const recipe = service.getRecipeById('52772');
+    expect(recipe()?.id).toBe('52772');
+    expect(recipe()?.name).toBe('Teriyaki Chicken Casserole');
   });
 
   it('should return undefined for non-existent recipe id', () => {
-    const recipe = service.getRecipeById(999);
+    const recipe = service.getRecipeById('999');
     expect(recipe()).toBeUndefined();
-  });
-
-  it('should return recipe with correct ingredients in English', () => {
-    const recipe = service.getRecipeById(1);
-    const ingredients = recipe()?.ingredients || [];
-
-    expect(ingredients).toContain('400g spaghetti');
-    expect(ingredients).toContain('200g pancetta or guanciale');
-  });
-
-  it('should return recipe with correct ingredients in Spanish', () => {
-    languageService.setLanguage('es');
-    const recipe = service.getRecipeById(1);
-    const ingredients = recipe()?.ingredients || [];
-
-    expect(ingredients).toContain('400g de espagueti');
-    expect(ingredients).toContain('200g de pancetta o guanciale');
-  });
-
-  it('should return recipe with correct instructions in Spanish', () => {
-    languageService.setLanguage('es');
-    const recipe = service.getRecipeById(1);
-    const instructions = recipe()?.instructions || [];
-
-    expect(instructions[0]).toContain('Hierve una olla grande de agua con sal');
-  });
-
-  it('should translate all cuisines correctly', () => {
-    const recipes = service.getRecipes;
-    const italianRecipe = recipes().find((r) => r.id === 1);
-    const indianRecipe = recipes().find((r) => r.id === 2);
-    const americanRecipe = recipes().find((r) => r.id === 3);
-
-    expect(italianRecipe?.cuisine).toBe('Italian');
-    expect(indianRecipe?.cuisine).toBe('Indian');
-    expect(americanRecipe?.cuisine).toBe('American');
-
-    languageService.setLanguage('es');
-    const recipesEs = service.getRecipes;
-    const italianRecipeEs = recipesEs().find((r) => r.id === 1);
-    const indianRecipeEs = recipesEs().find((r) => r.id === 2);
-    const americanRecipeEs = recipesEs().find((r) => r.id === 3);
-
-    expect(italianRecipeEs?.cuisine).toBe('Italiana');
-    expect(indianRecipeEs?.cuisine).toBe('India');
-    expect(americanRecipeEs?.cuisine).toBe('Americana');
-  });
-
-  it('should translate all difficulty levels correctly', () => {
-    const recipes = service.getRecipes;
-    const easyRecipe = recipes().find((r) => r.difficulty === 'Easy');
-    const mediumRecipe = recipes().find((r) => r.difficulty === 'Medium');
-
-    expect(easyRecipe).toBeDefined();
-    expect(mediumRecipe).toBeDefined();
-
-    languageService.setLanguage('es');
-    const recipesEs = service.getRecipes;
-    const easyRecipeEs = recipesEs().find((r) => r.difficulty === 'Fácil');
-    const mediumRecipeEs = recipesEs().find((r) => r.difficulty === 'Media');
-
-    expect(easyRecipeEs).toBeDefined();
-    expect(mediumRecipeEs).toBeDefined();
   });
 });

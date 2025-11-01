@@ -16,25 +16,14 @@
       <div class="recipe-content">
         <h2>{{ recipe.name }}</h2>
         <div class="recipe-meta">
-          <span class="meta-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <polyline points="12 6 12 12 16 14"></polyline>
-            </svg>
-            {{ recipe.prepTime + recipe.cookTime }} {{ translations().minutes }}
+          <span class="meta-item category-badge">
+            {{ recipe.category }}
           </span>
-          <span class="meta-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
-            {{ recipe.servings }} {{ translations().servings.toLowerCase() }}
-          </span>
-          <span class="meta-item difficulty" [class.easy]="recipe.difficulty === translations().easy" [class.medium]="recipe.difficulty === translations().medium">
-            {{ recipe.difficulty }}
-          </span>
+          @if (recipe.tags && recipe.tags.length > 0) {
+            <span class="meta-item tags">
+              {{ recipe.tags[0] }}
+            </span>
+          }
         </div>
       </div>
     </div>
