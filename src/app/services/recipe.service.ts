@@ -13,9 +13,15 @@ export class RecipeService {
 
   // Signal to hold all recipes
   private recipesSignal = signal<Recipe[]>([]);
+  private loadingSignal = signal<boolean>(false);
+  private hasMoreSignal = signal<boolean>(true);
+  private searchLetterIndex = 0;
+  private readonly SEARCH_LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
   // Public computed signal for recipes
   recipes = computed(() => this.recipesSignal());
+  loading = computed(() => this.loadingSignal());
+  hasMore = computed(() => this.hasMoreSignal());
 
   constructor() {
     this.loadRecipes();
@@ -65,29 +71,72 @@ export class RecipeService {
 
   /**
    * Load initial recipes from TheMealDB API
-   * Fetches 20 random meals to populate the recipe list
+   * Fetches recipes by searching with first letter
    */
   private loadRecipes(): void {
-    // Create an array of 20 random meal requests
-    const randomMealRequests = Array.from({ length: 20 }, () =>
-      this.http.get<MealDBResponse>(`${this.API_BASE_URL}/random.php`).pipe(
-        map(response => response.meals?.[0]),
-        catchError(() => of(null))
-      )
-    );
+    this.loadingSignal.set(true);
+    const letter = this.SEARCH_LETTERS[this.searchLetterIndex];
 
-    // Execute all requests in parallel
-    forkJoin(randomMealRequests).subscribe({
-      next: (meals) => {
-        const validRecipes = meals
-          .filter((meal): meal is MealDBRecipe => meal !== null)
-          .map(meal => this.transformMealDBRecipe(meal));
-
-        this.recipesSignal.set(validRecipes);
+    this.http.get<MealDBResponse>(`${this.API_BASE_URL}/search.php?f=${letter}`).pipe(
+      map(response => {
+        if (!response.meals) return [];
+        return response.meals.map(meal => this.transformMealDBRecipe(meal));
+      }),
+      catchError(() => of([]))
+    ).subscribe({
+      next: (recipes) => {
+        this.recipesSignal.set(recipes);
+        this.loadingSignal.set(false);
+        this.searchLetterIndex++;
       },
       error: (error) => {
         console.error('Error loading recipes from TheMealDB:', error);
         this.recipesSignal.set([]);
+        this.loadingSignal.set(false);
+      }
+    });
+  }
+
+  /**
+   * Load more recipes for infinite scroll
+   */
+  loadMoreRecipes(): void {
+    if (this.loadingSignal() || !this.hasMoreSignal()) {
+      return;
+    }
+
+    if (this.searchLetterIndex >= this.SEARCH_LETTERS.length) {
+      this.hasMoreSignal.set(false);
+      return;
+    }
+
+    this.loadingSignal.set(true);
+    const letter = this.SEARCH_LETTERS[this.searchLetterIndex];
+
+    this.http.get<MealDBResponse>(`${this.API_BASE_URL}/search.php?f=${letter}`).pipe(
+      map(response => {
+        if (!response.meals) return [];
+        return response.meals.map(meal => this.transformMealDBRecipe(meal));
+      }),
+      catchError(() => of([]))
+    ).subscribe({
+      next: (newRecipes) => {
+        // Filter out duplicates by ID
+        const currentRecipes = this.recipesSignal();
+        const existingIds = new Set(currentRecipes.map(r => r.id));
+        const uniqueNewRecipes = newRecipes.filter(r => !existingIds.has(r.id));
+
+        this.recipesSignal.set([...currentRecipes, ...uniqueNewRecipes]);
+        this.loadingSignal.set(false);
+        this.searchLetterIndex++;
+
+        if (this.searchLetterIndex >= this.SEARCH_LETTERS.length) {
+          this.hasMoreSignal.set(false);
+        }
+      },
+      error: (error) => {
+        console.error('Error loading more recipes:', error);
+        this.loadingSignal.set(false);
       }
     });
   }
